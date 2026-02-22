@@ -114,18 +114,18 @@ public sealed class CoffeeMachine : MonoBehaviour
                 break;
             
             case Step.AddWater:
-                currentStep   = Step.Press;
-                press.enabled = true;
+                currentStep = Step.Wait;
                 nextButton.SetActive(false);
                 break;
 
             case Step.Press:
-                currentStep = Step.Wait;
+                currentStep = Step.Done;
+                Finish();
                 break;
             
             case Step.Wait:
-                currentStep = Step.Done;
-                Finish();
+                currentStep   = Step.Press;
+                press.enabled = true;
                 break;
         }
 
@@ -174,6 +174,7 @@ public sealed class CoffeeMachine : MonoBehaviour
             Step.AddWater   => "Hold space to add water",
             Step.Press      => "Hold space to press down grounds",
             Step.Wait       => "Hold space to let it brew",
+            Step.Done       => "",
             _               => "Invalid step type, no idea how you got here"
         };
     }
@@ -197,6 +198,7 @@ public sealed class CoffeeMachine : MonoBehaviour
 
         grounds.fillAmount = 0;
         water.fillAmount   = 0;
+        coffee.fillAmount  = 0;
 
         pressPos = pressRange;
 

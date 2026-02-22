@@ -14,7 +14,7 @@ public class GachaSelection : MonoBehaviour
     {
         CheapBeansButton.interactable   = MoneyHandler.GetMoney() >= 1;
         QualityBeansButton.interactable = MoneyHandler.GetMoney() >= 10;
-        ExoticBeansButton.interactable  = MoneyHandler.GetMoney() >= 100;
+        ExoticBeansButton.interactable  = MoneyHandler.GetMoney() >= 25;
     }
 
     public void CheapBeans()
@@ -33,7 +33,7 @@ public class GachaSelection : MonoBehaviour
 
     public void ExoticBeans()
     {
-        MoneyHandler.ChangeMoney(-100);
+        MoneyHandler.ChangeMoney(-25);
         
         GotoPull(BeanLevel.Exotic);
     }
